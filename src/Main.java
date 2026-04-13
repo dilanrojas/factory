@@ -1,9 +1,12 @@
 public class Main {
   public static void main(String[] args) {
-    Method selectedMethod = Method.PAYPAL;
-    double total = 250.0;
+    PaypalFactory paypalFactory = new PaypalFactory();
+    CreditCardFactory creditCardFactory = new CreditCardFactory();
 
-    PaymentProcessor processor = PaymentFactory.createProcessor(selectedMethod);
-    processor.process(total);
+    PaymentProcessor paymentPaypal = paypalFactory.processPayment();
+    PaymentProcessor paymentCredit = creditCardFactory.processPayment();
+
+    paymentPaypal.process(250.45);
+    paymentCredit.process(300.45);
   }
 }
